@@ -1,0 +1,24 @@
+# Cloudflare Pages Configuration - Dirty Old Man Static Site
+# Website: dirtyoldman.com.br
+
+name = "dirty-old-man-static"
+
+# Pages build configuration
+type = "javascript"
+main = "functions/[[path]].js"
+compatibility_date = "2026-06-14"
+
+# Static site build output
+[build]
+command = "echo 'Static site - no build required'"
+
+# Ensure HTML files are served as static assets
+[env.production]
+name = "dirty-old-man-static"
+routes = [
+  { pattern = "dirtyoldman.com.br", zone_id = "*" },
+  { pattern = "www.dirtyoldman.com.br", zone_id = "*" }
+]
+
+# Cloudflare Pages will serve index.html and styles.css directly
+# No special configuration needed - files are at root level
